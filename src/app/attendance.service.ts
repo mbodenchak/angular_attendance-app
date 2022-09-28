@@ -20,6 +20,6 @@ export class AttendanceService {
     const pos = this.students.findIndex((student) => {
       return student.name === studentInfo.name;
     });
-    this.students[pos].attendance = studentInfo.side;
+    this.students[pos].attendance = studentInfo.attendance;
   }
 }

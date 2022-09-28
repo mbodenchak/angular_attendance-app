@@ -6,11 +6,9 @@ import { AttendanceService } from '../attendance.service';
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css'],
-  providers: [AttendanceService],
 })
 export class TabsComponent implements OnInit {
   students = [];
-
   chosenAttendance = 'all';
   attndService: AttendanceService;
 
