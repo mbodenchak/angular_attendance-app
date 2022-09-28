@@ -1,8 +1,18 @@
 <div>
   <ul class="nav nav-tabs">
-    <li role="presentation"><a href="#">All</a></li>
-    <li role="presentation"><a href="#">Present</a></li>
-    <li role="presentation"><a href="#">Absent</a></li>
+    <li role="presentation">
+      <a href="#" (click)="onChoose('all')" style="cursor: pointer">All</a>
+    </li>
+    <li role="presentation">
+      <a href="#" (click)="onChoose('present')" style="cursor: pointer"
+        >Present</a
+      >
+    </li>
+    <li role="presentation">
+      <a href="#" (click)="onChoose('absent')" style="cursor: pointer"
+        >Absent</a
+      >
+    </li>
   </ul>
-  <app-list></app-list>
+  <app-list [students]="getStudents()"></app-list>
 </div>
