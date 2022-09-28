@@ -1,3 +1,7 @@
+import { Injectable } from '@angular/core';
+import { LogService } from './log.service';
+
+@Injectable()
 export class AttendanceService {
   private students = [
     { name: 'Michael S', attendance: '' },
@@ -5,6 +9,12 @@ export class AttendanceService {
     { name: 'Evan M', attendance: '' },
     { name: 'Tommy W', attendance: '' },
   ];
+
+  private logService: LogService;
+
+  constructor(logService: LogService) {
+    this.logService = logService;
+  }
 
   getStudents(chosenAttendance) {
     //use slice to return copy to prevent editing original array
@@ -21,5 +31,11 @@ export class AttendanceService {
       return student.name === studentInfo.name;
     });
     this.students[pos].attendance = studentInfo.attendance;
+    this.logService.writeLog(
+      'Changed side of ' +
+        studentInfo.name +
+        ', new attendance: ' +
+        studentInfo.attendance
+    );
   }
 }
