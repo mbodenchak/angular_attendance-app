@@ -25,7 +25,7 @@ export class TabsComponent implements OnInit {
   getStudents() {
     //use slice to return copy to prevent editing original array
     if (this.chosenAttendance === 'all') {
-      return this.chosenAttendance.slice();
+      return this.students.slice();
     }
     return this.students.filter((student) => {
       return student.attendance === this.chosenAttendance;
