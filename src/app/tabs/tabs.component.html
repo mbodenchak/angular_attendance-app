@@ -1,14 +1,20 @@
 <div>
   <ul class="nav nav-tabs">
-    <li role="presentation">
+    <li role="presentation" [ngClass]="{ active: chosenAttendance === 'all' }">
       <a href="#" (click)="onChoose('all')" style="cursor: pointer">All</a>
     </li>
-    <li role="presentation">
+    <li
+      role="presentation"
+      [ngClass]="{ active: chosenAttendance === 'present' }"
+    >
       <a href="#" (click)="onChoose('present')" style="cursor: pointer"
         >Present</a
       >
     </li>
-    <li role="presentation">
+    <li
+      role="presentation"
+      [ngClass]="{ active: chosenAttendance === 'absent' }"
+    >
       <a href="#" (click)="onChoose('absent')" style="cursor: pointer"
         >Absent</a
       >
