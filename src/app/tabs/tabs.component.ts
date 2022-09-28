@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AttendanceService } from '../attendance.service';
+
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css'],
+  providers: [AttendanceService],
 })
 export class TabsComponent implements OnInit {
-  students = [
-    { name: 'Michael S', attendance: '' },
-    { name: 'Sarah J', attendance: '' },
-    { name: 'Evan M', attendance: '' },
-    { name: 'Tommy W', attendance: '' },
-  ];
-  chosenAttendance = 'all';
+  students = [];
 
-  constructor() {}
+  chosenAttendance = 'all';
+  attndService: AttendanceService;
+
+  constructor(attndService: AttendanceService) {
+    this.attndService = attndService;
+  }
 
   ngOnInit(): void {}
 
@@ -23,12 +25,7 @@ export class TabsComponent implements OnInit {
   }
 
   getStudents() {
-    //use slice to return copy to prevent editing original array
-    if (this.chosenAttendance === 'all') {
-      return this.students.slice();
-    }
-    return this.students.filter((student) => {
-      return student.attendance === this.chosenAttendance;
-    });
+    this.students = this.attndService.getStudents(this.chosenAttendance);
+    return this.students;
   }
 }

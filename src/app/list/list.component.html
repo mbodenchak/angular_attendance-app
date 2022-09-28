@@ -1,3 +1,7 @@
 <div class="list-group">
-  <app-item *ngFor="let student of students" [student]="student"></app-item>
+  <app-item
+    *ngFor="let student of students"
+    [student]="student"
+    (attendanceAssigned)="onAttendanceAssigned($event)"
+  ></app-item>
 </div>
