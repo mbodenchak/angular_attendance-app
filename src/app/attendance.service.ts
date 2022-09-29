@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { LogService } from './log.service';
 
@@ -15,8 +16,19 @@ export class AttendanceService {
 
   studentsUpdated = new Subject<void>();
 
-  constructor(logService: LogService) {
+  http: HttpClient;
+
+  constructor(logService: LogService, http: HttpClient) {
     this.logService = logService;
+    this.http = http;
+  }
+
+  fetchStudents() {
+    this.http
+      .get('https://randomuser.me/api/')
+      .subscribe((response: Response) => {
+        console.log(response);
+      });
   }
 
   getStudents(chosenAttendance) {

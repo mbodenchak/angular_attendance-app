@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
-import { AttendanceService } from './attendance.service';
-import { LogService } from './log.service';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { HeaderComponent } from './header/header.component';
+
+import { AttendanceService } from './attendance.service';
+import { LogService } from './log.service';
 
 const routes: Routes = [
   {
@@ -42,7 +45,12 @@ const routes: Routes = [
     AddStudentComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+  ],
   providers: [AttendanceService, LogService],
   bootstrap: [AppComponent],
 })
