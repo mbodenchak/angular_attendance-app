@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AttendanceService } from '../attendance.service';
 
 @Component({
   selector: 'app-add-student',
@@ -12,7 +13,19 @@ export class AddStudentComponent implements OnInit {
     { display: 'Absent', value: 'Absent' },
   ];
 
-  constructor() {}
+  attndService: AttendanceService;
+
+  constructor(attndService: AttendanceService) {
+    this.attndService = attndService;
+  }
 
   ngOnInit(): void {}
+
+  onSubmit(submittedForm) {
+    console.log(submittedForm.value);
+    this.attndService.addStudent(
+      submittedForm.value.name,
+      submittedForm.value.attendance
+    );
+  }
 }

@@ -38,4 +38,9 @@ export class AttendanceService {
         studentInfo.attendance
     );
   }
+
+  addStudent(name, attendance) {
+    const newStudent = { name: name, attendance: attendance };
+    this.students.push(newStudent);
+  }
 }
