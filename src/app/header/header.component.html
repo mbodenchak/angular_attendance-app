@@ -1,4 +1,12 @@
 <ul class="nav nav-pills">
-  <li role="presentation" class="active"><a href="#">Class Roster</a></li>
-  <li role="presentation"><a href="#">Add Student</a></li>
+  <li
+    role="presentation"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <a routerLink="/">Class Roster</a>
+  </li>
+  <li role="presentation" routerLinkActive="active">
+    <a routerLink="/new-student">Add Student</a>
+  </li>
 </ul>

@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'new-student',
     component: AddStudentComponent,
   },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
