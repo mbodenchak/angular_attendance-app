@@ -21,7 +21,6 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.attndService.fetchStudents();
     this.activatedRoute.params.subscribe((params) => {
       this.students = this.attndService.getStudents(params.attendance);
       this.loadedAttendance = params.attendance;
