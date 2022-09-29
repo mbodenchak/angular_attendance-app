@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { LogService } from './log.service';
 
 @Injectable()
@@ -11,6 +12,8 @@ export class AttendanceService {
   ];
 
   private logService: LogService;
+
+  studentsUpdated = new Subject<void>();
 
   constructor(logService: LogService) {
     this.logService = logService;
@@ -31,6 +34,7 @@ export class AttendanceService {
       return student.name === studentInfo.name;
     });
     this.students[pos].attendance = studentInfo.attendance;
+    this.studentsUpdated.next();
     this.logService.writeLog(
       'Changed side of ' +
         studentInfo.name +

@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AttendanceService } from '../attendance.service';
 
 @Component({
   selector: 'app-list',
@@ -6,9 +8,23 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  @Input() students;
+  students = [];
+  activatedRoute: ActivatedRoute;
+  attndService: AttendanceService;
+  loadedAttendance = 'all';
 
-  constructor() {}
+  constructor(activatedRoute: ActivatedRoute, attndService: AttendanceService) {
+    this.activatedRoute = activatedRoute;
+    this.attndService = attndService;
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      this.students = this.attndService.getStudents(params.attendance);
+      this.loadedAttendance = params.attendance;
+    });
+    this.attndService.studentsUpdated.subscribe(() => {
+      this.students = this.attndService.getStudents(this.loadedAttendance);
+    });
+  }
 }

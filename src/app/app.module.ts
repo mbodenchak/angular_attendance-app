@@ -13,8 +13,15 @@ import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'students',
     component: TabsComponent,
+    children: [
+      { path: '', redirectTo: 'all', pathMatch: 'full' },
+      {
+        path: ':attendance',
+        component: ListComponent,
+      },
+    ],
   },
   {
     path: 'new-student',
@@ -22,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: '/students',
   },
 ];
 

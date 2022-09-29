@@ -1,24 +1,14 @@
 <div>
   <ul class="nav nav-tabs">
-    <li role="presentation" [ngClass]="{ active: chosenAttendance === 'all' }">
-      <a href="#" (click)="onChoose('all')" style="cursor: pointer">All</a>
+    <li role="presentation" routerLinkActive="active">
+      <a routerLink="/students/all">All</a>
     </li>
-    <li
-      role="presentation"
-      [ngClass]="{ active: chosenAttendance === 'present' }"
-    >
-      <a href="#" (click)="onChoose('present')" style="cursor: pointer"
-        >Present</a
-      >
+    <li role="presentation" routerLinkActive="active">
+      <a routerLink="/students/present">Present</a>
     </li>
-    <li
-      role="presentation"
-      [ngClass]="{ active: chosenAttendance === 'absent' }"
-    >
-      <a href="#" (click)="onChoose('absent')" style="cursor: pointer"
-        >Absent</a
-      >
+    <li role="presentation" routerLinkActive="active">
+      <a routerLink="/students/absent">Absent</a>
     </li>
   </ul>
-  <app-list [students]="getStudents()"></app-list>
+  <router-outlet></router-outlet>
 </div>
