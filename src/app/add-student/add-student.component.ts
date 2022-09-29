@@ -22,6 +22,9 @@ export class AddStudentComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(submittedForm) {
+    if (submittedForm.invalid) {
+      return;
+    }
     console.log(submittedForm.value);
     this.attndService.addStudent(
       submittedForm.value.name,

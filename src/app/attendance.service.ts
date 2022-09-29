@@ -40,6 +40,12 @@ export class AttendanceService {
   }
 
   addStudent(name, attendance) {
+    const pos = this.students.findIndex((student) => {
+      return student.name === name;
+    });
+    if (pos !== -1) {
+      return;
+    }
     const newStudent = { name: name, attendance: attendance };
     this.students.push(newStudent);
   }
